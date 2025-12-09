@@ -122,8 +122,8 @@
       position: absolute;
       top: -6px;
       right: -6px;
-      width: 70px;
-      height: 70px;
+      width: 90px;   /* ingrandita */
+      height: 90px;  /* ingrandita */
       border-radius: 999px;
       overflow: hidden;
       border: 2px solid rgba(255, 255, 255, 0.85);
@@ -331,65 +331,6 @@
       color: #ffffff;
     }
 
-    /* QR BONUS SECTION */
-
-    .bonus {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 22px;
-      align-items: center;
-      background: linear-gradient(135deg, rgba(255,45,138,0.18), rgba(34,75,255,0.08));
-      border-radius: 22px;
-      padding: 20px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .bonus h3 {
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
-    .bonus p {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .bonus-list {
-      font-size: 0.82rem;
-      margin-bottom: 8px;
-      color: var(--text-muted);
-    }
-
-    .bonus-list li {
-      margin-left: 18px;
-    }
-
-    .qr-box {
-      justify-self: center;
-      text-align: center;
-    }
-
-    .qr-inner {
-      padding: 10px;
-      border-radius: 18px;
-      background: #050510;
-      border: 1px solid rgba(255,255,255,0.3);
-      box-shadow: 0 14px 26px rgba(0,0,0,0.5);
-      display: inline-block;
-    }
-
-    .qr-inner img {
-      width: 140px;
-      height: 140px;
-    }
-
-    .qr-caption {
-      margin-top: 6px;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-    }
-
     /* SERVICES */
 
     .service-grid {
@@ -420,40 +361,6 @@
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.3);
       margin-bottom: 4px;
-    }
-
-    /* PORTFOLIO */
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .portfolio-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      padding: 10px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
-      font-size: 0.82rem;
-    }
-
-    .portfolio-thumb {
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .portfolio-label {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .portfolio-type {
-      color: var(--text-muted);
-      font-size: 0.78rem;
     }
 
     /* CONTACT */
@@ -489,7 +396,6 @@
 
     @media (max-width: 840px) {
       .hero,
-      .bonus,
       .contact {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -533,7 +439,6 @@
       <nav class="nav-links">
         <a href="#books">Books</a>
         <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -551,8 +456,9 @@
           AI-Driven Landing Pages<span class="dot">•</span>QR Code Solutions<span class="dot">•</span>Digital Menus<span class="dot">•</span>SEO Copywriting<span class="dot">•</span>Ghostwriting &amp; KDP Publishing<span class="dot">•</span>Book &amp; Ebook Covers<span class="dot">•</span>Logo Design<span class="dot">•</span>Translations (IT–DE–EN–PT)
         </p>
         <div class="hero-buttons">
-          <a href="#portfolio" class="btn-primary">View portfolio</a>
-          <a href="#contact" class="btn-ghost">Work with me</a>
+          <!-- PULSANTE PRINCIPALE: LAVORA CON ME -->
+          <!-- CAMBIA href="#contact" con il link che vuoi (es. pagina Fiverr) -->
+          <a href="#contact" class="btn-primary">Lavora con me</a>
         </div>
         <div class="hero-meta">
           Fast delivery • Clear communication • AI-powered workflow
@@ -562,15 +468,15 @@
         <div class="hero-right-title">Highlights</div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <strong>Landing & QR</strong>
-            <span>Pages and QR flows for bookings, menus and promotions.</span>
+            <strong>Menu &amp; QR</strong>
+            <span>QR-coded menus and flows for restaurants, salons and local offers.</span>
           </div>
           <div class="hero-stat">
-            <strong>Books & KDP</strong>
+            <strong>Books &amp; KDP</strong>
             <span>Non-fiction guides, covers and publishing support.</span>
           </div>
           <div class="hero-stat">
-            <strong>Logos & Visuals</strong>
+            <strong>Logos &amp; Visuals</strong>
             <span>Minimal, clean designs for modern brands.</span>
           </div>
           <div class="hero-stat">
@@ -606,8 +512,8 @@
           <div class="book-title">Vivere e Lavorare in Germania – Italian Edition</div>
           <div class="book-lang">IT • EN • DE • PT • ES • FR</div>
           <div class="book-actions">
-            <a href="#" class="btn-small-primary">View on Amazon</a>
-            <button class="btn-small">Bonus PDF via QR</button>
+            <!-- LINK AMAZON LIBRO 1 -->
+            <a href="https://www.amazon.com/dp/ID_LIBRO_1" class="btn-small-primary">View on Amazon</a>
           </div>
         </article>
 
@@ -619,8 +525,8 @@
           <div class="book-title">Living & Working in Switzerland</div>
           <div class="book-lang">Multi-language series</div>
           <div class="book-actions">
-            <a href="#" class="btn-small-primary">View on Amazon</a>
-            <button class="btn-small">Bonus PDF via QR</button>
+            <!-- LINK AMAZON LIBRO 2 -->
+            <a href="https://www.amazon.com/dp/ID_LIBRO_2" class="btn-small-primary">View on Amazon</a>
           </div>
         </article>
 
@@ -632,39 +538,10 @@
           <div class="book-title">Living & Working in Italy / Austria</div>
           <div class="book-lang">Part of the “Vivere e lavorare” series</div>
           <div class="book-actions">
-            <a href="#" class="btn-small-primary">View on Amazon</a>
-            <button class="btn-small">Bonus PDF via QR</button>
+            <!-- LINK AMAZON LIBRO 3 -->
+            <a href="https://www.amazon.com/dp/ID_LIBRO_3" class="btn-small-primary">View on Amazon</a>
           </div>
         </article>
-      </div>
-    </section>
-
-    <!-- BONUS QR SECTION -->
-    <section>
-      <div class="bonus">
-        <div>
-          <h3>Free extra PDF for readers</h3>
-          <p>
-            Scan the QR code to receive exclusive bonus content related to my
-            books: templates, checklists and practical tools to move abroad.
-          </p>
-          <ul class="bonus-list">
-            <li>Extra PDF with updated resources</li>
-            <li>Early access to new guides</li>
-            <li>Occasional tips on work & life abroad</li>
-          </ul>
-          <p class="bonus-note">
-            You can also use this section as an example of how I design QR-based
-            funnels for your own projects.
-          </p>
-        </div>
-        <div class="qr-box">
-          <div class="qr-inner">
-            <!-- Sostituisci qr-bonus.png con il tuo QR reale -->
-            <img src="qr-bonus.png" alt="Bonus PDF QR code" />
-          </div>
-          <div class="qr-caption">Scan to see a live example of a bonus flow.</div>
-        </div>
       </div>
     </section>
 
@@ -721,53 +598,6 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Portfolio</div>
-          <h2 class="section-title">Selected work & samples</h2>
-        </div>
-        <p class="section-subtitle">
-          A mix of real projects and concept designs to show style and quality.
-        </p>
-      </div>
-
-      <div class="portfolio-grid">
-        <article class="portfolio-card">
-          <div class="portfolio-thumb">
-            <img src="landing-example-1.jpg" alt="Landing page example" />
-          </div>
-          <div class="portfolio-label">Landing page – Tattoo Studio</div>
-          <div class="portfolio-type">One-page site + WhatsApp CTA</div>
-        </article>
-
-        <article class="portfolio-card">
-          <div class="portfolio-thumb">
-            <img src="menu-example.jpg" alt="Digital menu example" />
-          </div>
-          <div class="portfolio-label">QR Menu – Pizzeria</div>
-          <div class="portfolio-type">QR + digital menu PDF</div>
-        </article>
-
-        <article class="portfolio-card">
-          <div class="portfolio-thumb">
-            <img src="covers-example.jpg" alt="Book cover examples" />
-          </div>
-          <div class="portfolio-label">Book series covers</div>
-          <div class="portfolio-type">“Vivere e lavorare” collection</div>
-        </article>
-
-        <article class="portfolio-card">
-          <div class="portfolio-thumb">
-            <img src="logo-set.jpg" alt="Logo examples" />
-          </div>
-          <div class="portfolio-label">Logo & visual identity</div>
-          <div class="portfolio-type">Minimal, bold, digital-ready</div>
-        </article>
-      </div>
-    </section>
-
     <!-- CONTACT -->
     <section id="contact">
       <div class="contact">
@@ -781,8 +611,9 @@
           </p>
         </div>
         <div class="contact-actions">
-          <!-- Sostituisci gli href con i link reali -->
-          <a href="https://www.fiverr.com" class="btn-primary">Hire me on Fiverr</a>
+          <!-- LINK AL TUO PROFILO FIVERR -->
+          <a href="https://www.fiverr.com/yourusername" class="btn-primary">Hire me on Fiverr</a>
+          <!-- EMAIL -->
           <a href="mailto:youremail@example.com" class="btn-ghost">Email</a>
         </div>
       </div>
