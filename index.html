@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Duda Digital Studio – AI Web Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-dark: #050510;
+      --accent-pink: #ff2d8a;
+      --accent-purple: #c243e0;
+      --accent-blue: #224bff;
+      --text-main: #ffffff;
+      --text-muted: #c9c9d5;
+      --card-bg: #0b0b18;
+      --border-soft: #26263a;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #181830 0, #050510 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* NAV / HEADER */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-pink);
+    }
+
+    /* HERO */
+
+    .hero {
+      border-radius: 28px;
+      padding: 28px 24px 32px;
+      background: radial-gradient(circle at top left, #ff2d8a 0, #c243e0 40%, #224bff 100%);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-main {
+      position: relative;
+    }
+
+    .founder-photo {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      max-width: 650px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle span.dot {
+      padding: 0 4px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff2d8a, #c243e0, #224bff);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(5, 5, 16, 0.16);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(5, 5, 16, 0.28);
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .hero-right {
+      background: rgba(5, 5, 16, 0.35);
+      border-radius: 22px;
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-right-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 0.75rem;
+    }
+
+    .hero-stat {
+      background: rgba(5, 5, 16, 0.46);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .hero-right-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* SECTION BASE */
+
+    section {
+      margin-bottom: 42px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* BOOKS */
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .book-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .book-cover {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .book-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .book-lang {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-small {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .btn-small-primary {
+      background: linear-gradient(135deg, #ff2d8a, #224bff);
+      border: none;
+      color: #ffffff;
+    }
+
+    /* QR BONUS SECTION */
+
+    .bonus {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 22px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,45,138,0.18), rgba(34,75,255,0.08));
+      border-radius: 22px;
+      padding: 20px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .bonus h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .bonus p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .bonus-list {
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .bonus-list li {
+      margin-left: 18px;
+    }
+
+    .qr-box {
+      justify-self: center;
+      text-align: center;
+    }
+
+    .qr-inner {
+      padding: 10px;
+      border-radius: 18px;
+      background: #050510;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 14px 26px rgba(0,0,0,0.5);
+      display: inline-block;
+    }
+
+    .qr-inner img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .qr-caption {
+      margin-top: 6px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* SERVICES */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 12px 12px 14px;
+      font-size: 0.84rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      margin-bottom: 4px;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .portfolio-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      padding: 10px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+      font-size: 0.82rem;
+    }
+
+    .portfolio-thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .portfolio-label {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .portfolio-type {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: #050510;
+      border-radius: 22px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .contact p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .contact-actions a {
+      font-size: 0.86rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 840px) {
+      .hero,
+      .bonus,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .founder-photo {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .nav-links {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="logo">
+          <!-- Sostituisci your-logo.png con il tuo logo -->
+          <img src="your-logo.png" alt="Duda Digital Studio logo" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Duda Digital Studio</span>
+          <span class="brand-tagline">AI Web Design & Digital Creation</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#books">Books</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="founder-photo">
+          <!-- Sostituisci your-photo.jpg con la tua foto -->
+          <img src="your-photo.jpg" alt="Founder portrait" />
+        </div>
+        <div class="hero-kicker">AI Web Designer & Digital Studio</div>
+        <h1 class="hero-title">Smart digital experiences for small businesses.</h1>
+        <p class="hero-subtitle">
+          AI-Driven Landing Pages<span class="dot">•</span>QR Code Solutions<span class="dot">•</span>Digital Menus<span class="dot">•</span>SEO Copywriting<span class="dot">•</span>Ghostwriting &amp; KDP Publishing<span class="dot">•</span>Book &amp; Ebook Covers<span class="dot">•</span>Logo Design<span class="dot">•</span>Translations (IT–DE–EN–PT)
+        </p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn-primary">View portfolio</a>
+          <a href="#contact" class="btn-ghost">Work with me</a>
+        </div>
+        <div class="hero-meta">
+          Fast delivery • Clear communication • AI-powered workflow
+        </div>
+      </div>
+      <aside class="hero-right">
+        <div class="hero-right-title">Highlights</div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>Landing & QR</strong>
+            <span>Pages and QR flows for bookings, menus and promotions.</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Books & KDP</strong>
+            <span>Non-fiction guides, covers and publishing support.</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Logos & Visuals</strong>
+            <span>Minimal, clean designs for modern brands.</span>
+          </div>
+          <div class="hero-stat">
+            <strong>4 Languages</strong>
+            <span>IT, DE, EN, PT for global clients.</span>
+          </div>
+        </div>
+        <p class="hero-right-note">
+          This portfolio showcases real and demo projects to illustrate the style and quality of my work.
+        </p>
+      </aside>
+    </section>
+
+    <!-- BOOKS -->
+    <section id="books">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Books & Guides</div>
+          <h2 class="section-title">My KDP publications</h2>
+        </div>
+        <p class="section-subtitle">
+          Practical guides about living and working abroad, in multiple languages.
+        </p>
+      </div>
+
+      <div class="book-grid">
+        <!-- BOOK 1 -->
+        <article class="book-card">
+          <div class="book-cover">
+            <!-- Copertina libro 1 -->
+            <img src="book1-cover.jpg" alt="Book 1 cover" />
+          </div>
+          <div class="book-title">Vivere e Lavorare in Germania – Italian Edition</div>
+          <div class="book-lang">IT • EN • DE • PT • ES • FR</div>
+          <div class="book-actions">
+            <a href="#" class="btn-small-primary">View on Amazon</a>
+            <button class="btn-small">Bonus PDF via QR</button>
+          </div>
+        </article>
+
+        <!-- BOOK 2 -->
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="book2-cover.jpg" alt="Book 2 cover" />
+          </div>
+          <div class="book-title">Living & Working in Switzerland</div>
+          <div class="book-lang">Multi-language series</div>
+          <div class="book-actions">
+            <a href="#" class="btn-small-primary">View on Amazon</a>
+            <button class="btn-small">Bonus PDF via QR</button>
+          </div>
+        </article>
+
+        <!-- BOOK 3 -->
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="book3-cover.jpg" alt="Book 3 cover" />
+          </div>
+          <div class="book-title">Living & Working in Italy / Austria</div>
+          <div class="book-lang">Part of the “Vivere e lavorare” series</div>
+          <div class="book-actions">
+            <a href="#" class="btn-small-primary">View on Amazon</a>
+            <button class="btn-small">Bonus PDF via QR</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- BONUS QR SECTION -->
+    <section>
+      <div class="bonus">
+        <div>
+          <h3>Free extra PDF for readers</h3>
+          <p>
+            Scan the QR code to receive exclusive bonus content related to my
+            books: templates, checklists and practical tools to move abroad.
+          </p>
+          <ul class="bonus-list">
+            <li>Extra PDF with updated resources</li>
+            <li>Early access to new guides</li>
+            <li>Occasional tips on work & life abroad</li>
+          </ul>
+          <p class="bonus-note">
+            You can also use this section as an example of how I design QR-based
+            funnels for your own projects.
+          </p>
+        </div>
+        <div class="qr-box">
+          <div class="qr-inner">
+            <!-- Sostituisci qr-bonus.png con il tuo QR reale -->
+            <img src="qr-bonus.png" alt="Bonus PDF QR code" />
+          </div>
+          <div class="qr-caption">Scan to see a live example of a bonus flow.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Services</div>
+          <h2 class="section-title">What I can do for you</h2>
+        </div>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="badge">AI Web</div>
+          <div class="service-title">Landing pages & one-page sites</div>
+          <p>
+            Clean, conversion-focused pages for bookings, services, lead
+            capture and simple sales funnels.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="badge">QR & Menus</div>
+          <div class="service-title">QR flows & digital menus</div>
+          <p>
+            QR codes linked to menus, offers or contact forms. Designed for
+            restaurants, salons, beauty artists and local businesses.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="badge">Books</div>
+          <div class="service-title">Ghostwriting & KDP</div>
+          <p>
+            Support for non-fiction ebooks: structure, writing, editing,
+            formatting and launch on Amazon KDP.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="badge">Visual</div>
+          <div class="service-title">Covers & logo design</div>
+          <p>
+            Minimal covers and logos that match your brand colors and speak to
+            your audience in a modern, digital style.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="badge">Language</div>
+          <div class="service-title">Translations & content localization</div>
+          <p>
+            Italian, German, English and Portuguese translations with a focus
+            on clarity, tone of voice and SEO-friendly wording.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Portfolio</div>
+          <h2 class="section-title">Selected work & samples</h2>
+        </div>
+        <p class="section-subtitle">
+          A mix of real projects and concept designs to show style and quality.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <div class="portfolio-thumb">
+            <img src="landing-example-1.jpg" alt="Landing page example" />
+          </div>
+          <div class="portfolio-label">Landing page – Tattoo Studio</div>
+          <div class="portfolio-type">One-page site + WhatsApp CTA</div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-thumb">
+            <img src="menu-example.jpg" alt="Digital menu example" />
+          </div>
+          <div class="portfolio-label">QR Menu – Pizzeria</div>
+          <div class="portfolio-type">QR + digital menu PDF</div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-thumb">
+            <img src="covers-example.jpg" alt="Book cover examples" />
+          </div>
+          <div class="portfolio-label">Book series covers</div>
+          <div class="portfolio-type">“Vivere e lavorare” collection</div>
+        </article>
+
+        <article class="portfolio-card">
+          <div class="portfolio-thumb">
+            <img src="logo-set.jpg" alt="Logo examples" />
+          </div>
+          <div class="portfolio-label">Logo & visual identity</div>
+          <div class="portfolio-type">Minimal, bold, digital-ready</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let’s build something together.</h2>
+          <p>
+            Tell me briefly what you need (landing page, QR menu, book cover,
+            translation, etc.) and I’ll come back with ideas, timing and a
+            clear price.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <!-- Sostituisci gli href con i link reali -->
+          <a href="https://www.fiverr.com" class="btn-primary">Hire me on Fiverr</a>
+          <a href="mailto:youremail@example.com" class="btn-ghost">Email</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
